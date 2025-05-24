@@ -1,0 +1,74 @@
+{
+  "CSS": [
+    {
+      "question": "How wide do you think .my-box will be?                                         .my-box {   width: 200px;   border: 10px solid;   padding: 10px; }          ",
+      "answers": [
+        "asf",
+        "sadf",
+        "sf",
+        "sdf"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "afsdafsdf",
+      "answers": [
+        "asfdsf",
+        "sdafsda",
+        "sdfsad",
+        "fsdf"
+      ],
+      "correct": 3
+    }
+  ],
+  "PYTHON": [
+    {
+      "question": "which one is not used in python?",
+      "answers": [
+        "br",
+        "if",
+        "while",
+        "for"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "python is ? which one is not correct?",
+      "answers": [
+        "programming language",
+        "can be used for automation",
+        "Hypertext Markup Language",
+        "none of these"
+      ],
+      "correct": 2,
+      "code": null,
+      "explanation": null
+    },
+    {
+      "question": "What is a correct syntax to output \"Hello World\" in Python?",
+      "answers": [
+        "echo \"Hello World!\"",
+        "p(\"Hello World!\")",
+        "print(\"Hello World!\")",
+        "echo(\"Hello World!\")"
+      ],
+      "correct": 2,
+      "code": null,
+      "explanation": "abc"
+    }
+  ],
+  "BASH": [
+    {
+      "question": "which one is not from bash syntax?",
+      "answers": [
+        "if",
+        "read",
+        "echo",
+        "p tag"
+      ],
+      "correct": 3,
+      "code": null,
+      "explanation": "p tag: It is a HTML tag. Paragraph tag <p></p>"
+    }
+  ]
+}

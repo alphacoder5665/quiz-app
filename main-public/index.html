@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Professional Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <h1>
+          <a href="#" onclick="goHome()" style="color:white; text-decoration:none;">
+            🏠 Home
+          </a>
+        </h1>
+        <ul id="category-list">
+          <li data-category="HTML">HTML</li>
+          <li data-category="CSS">CSS</li>
+          <li data-category="JavaScript">JavaScript</li> 
+          <li data-category="Python">Python</li>
+          <li data-category="Bash">Bash</li>
+        </ul>
+      </nav>
+
+      <section id="home-screen">
+        <h2>Welcome to the Quiz App!</h2>
+        <button onclick="showSection('create')">Create Quiz</button>
+        <button onclick="showSection('take')">Take Quiz</button>
+      </section>
+      
+      
+
+  <main id="main-container">
+    <aside id="sidebar">
+      <h3 id="selected-category">Category name</h3>
+      <ul id="question-list"></ul>
+    </aside>
+
+    <section id="quiz-player" class="section">
+      <div id="quiz-area"></div>
+    </section>
+  </main>
+
+  <section id="create-quiz-screen" class="section" style="display:none;">
+    <h2>Create a New Quiz</h2>
+  
+    <div id="create-container">
+      <aside>
+        <p><strong>Instructions:</strong><br> Fill in the fields to create a custom quiz.</p>
+      </aside>
+  
+      <div id="quiz-builder">
+        <form id="quiz-form">
+            <div class="form-group">
+              <label>Category</label>
+              <input type="text" id="category" placeholder="e.g., HTML" required>
+            </div>
+          
+            <div class="form-group">
+              <label>Question</label>
+              <input type="text" id="question" placeholder="Type your question" required>
+            </div>
+          
+            <div class="form-group">
+              <label>Code (optional)</label>
+              <textarea id="code" placeholder="Paste any code related to the question" rows="4"></textarea>
+            </div>
+          
+            <div class="form-group">
+              <label>Answers</label>
+              <input type="text" class="answer" placeholder="Answer 1" required>
+              <input type="text" class="answer" placeholder="Answer 2" required>
+              <input type="text" class="answer" placeholder="Answer 3">
+              <input type="text" class="answer" placeholder="Answer 4">
+            </div>
+          
+            <div class="form-group">
+              <label>Correct Answer Index (1-based)</label>
+              <input type="number" id="correct" placeholder="1" required>
+            </div>
+          
+            <div class="form-group">
+              <label>Explanation (optional)</label>
+              <textarea id="explanation" placeholder="Provide reasoning or hints for the correct answer" rows="4"></textarea>
+            </div>
+          
+            <div class="form-group">
+              <button type="submit">💾 Save Quiz</button>
+            </div>
+          </form>
+          
+      </div>
+    </div>
+  </section>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
