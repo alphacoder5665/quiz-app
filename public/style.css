@@ -101,12 +101,6 @@ nav h1 {
 
 
 .explanation-block {
-  /* margin-top: 20px;
-    padding: 10px;
-    background: #f9f9f9;
-    border-left: 4px solid var(--primary);
-    white-space: pre-wrap; */
-
   background: #fff8e1;
   border-left: 5px solid #ffc107;
   padding: 12px;
@@ -114,7 +108,11 @@ nav h1 {
   border-radius: 4px;
   font-size: 0.95rem;
   line-height: 1.5;
+  max-width: 100ch;
+  overflow-x: auto;
+  white-space: pre-wrap;
 }
+
 
 pre code {
   background: #eee;
