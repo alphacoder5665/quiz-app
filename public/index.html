@@ -78,8 +78,14 @@
           
             <div class="form-group">
               <label>Explanation (optional)</label>
-              <textarea id="explanation" placeholder="Provide reasoning or hints for the correct answer" rows="4"></textarea>
+              <div>
+                <label><input type="radio" name="explain-type" value="code"> Contains Code</label><br>
+                <label><input type="radio" name="explain-type" value="text"> Contains Paragraph</label><br>
+                <label><input type="radio" name="explain-type" value="both" checked> Contains Code and Paragraph</label>
+              </div>
+              <textarea id="explanation" placeholder="Example: \nSome paragraph.\n\n\`\`\`\nconsole.log('code here');\n\`\`\`" rows="6"></textarea>
             </div>
+            
           
             <div class="form-group">
               <button type="submit">💾 Save Quiz</button>

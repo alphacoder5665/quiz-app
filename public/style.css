@@ -109,9 +109,21 @@ nav h1 {
   font-size: 0.95rem;
   line-height: 1.5;
   max-width: 100ch;
-  overflow-x: auto;
+  max-height: 250px;
+  overflow: auto;
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
+
+.explanation-block strong {
+  margin: 0;
+  /* padding: 10px; */
+}
+
+.explanation-block p {
+  margin: 0 0 8px;
+}
+
 
 
 pre code {

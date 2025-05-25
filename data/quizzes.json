@@ -53,6 +53,17 @@
       ],
       "correct": 2,
       "explanation": "abc"
+    },
+    {
+      "question": "What is python?",
+      "answers": [
+        "Hypertext Markup Language",
+        "Programming Language",
+        "Cascading Style Sheet",
+        "None of these"
+      ],
+      "correct": 1,
+      "explanation": "Python is a high-level, general-purpose programming language designed for code readability, with a syntax that emphasizes the use of significant whitespace.\n\n```\nname = \"John\"\nage = 56\n\nprint(f\"{name=}, {age=}\")\n```"
     }
   ],
   "bash": [

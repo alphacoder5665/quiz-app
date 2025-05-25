@@ -2,6 +2,30 @@ const form = document.getElementById("quiz-form");
 const quizArea = document.getElementById("quiz-area");
 const categoryList = document.getElementById("category-list");
 
+
+function formatExplanation(explanation) {
+  const parts = explanation.split(/```/g);
+  let html = "";
+
+  parts.forEach((part, i) => {
+    if (i % 2 === 1) {
+      // Code block
+      html += `<pre><code>${part.trim()}</code></pre>`;
+    } else {
+      // Paragraph block
+      const wrapped = part
+        .trim()
+        .split("\n")
+        .map((line) => `<p>${line}</p>`)
+        .join("");
+      html += wrapped;
+    }
+  });
+
+  return html;
+}
+
+
 async function getQuizzes() {
   const res = await fetch("/api/quizzes");
   return res.json();
@@ -129,12 +153,13 @@ function renderQuestion(category, index) {
         ${
           quiz.explanation
             ? `
-            <div class="explanation-block" style="display:none;">
-              <strong>Reason/Explanation:</strong>
-              <pre>${quiz.explanation}</pre>
-            </div>`
+          <div class="explanation-block" style="display:none;">
+            <strong>Reason/Explanation:</strong>
+            ${formatExplanation(quiz.explanation)}
+          </div>`
             : ""
         }
+        
         <div class="question-actions">
           <button onclick="editQuiz('${category}', ${index})">✏️ Edit</button>
           <button onclick="deleteQuiz('${category}', ${index})">🗑️ Delete</button>
