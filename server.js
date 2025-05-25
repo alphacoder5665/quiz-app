@@ -15,13 +15,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-
 app.get("/api/quizzes", (req, res) => {
   const data = fs.readFileSync(DATA_PATH, "utf-8");
-//   console.log("Sending quizzes data:", data);
+  //   console.log("Sending quizzes data:", data);
   res.json(JSON.parse(data));
 });
-  
+
 app.post("/api/quizzes", (req, res) => {
   let { category, quiz } = req.body;
   if (!category || !quiz)
@@ -45,6 +44,21 @@ app.post("/api/quizzes/delete", (req, res) => {
 
   if (data[category] && data[category][index]) {
     data[category].splice(index, 1);
+    fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2));
+    res.json({ success: true });
+  } else {
+    res.status(404).json({ error: "Quiz not found" });
+  }
+});
+
+app.put("/api/quizzes", (req, res) => {
+  let { category, index, quiz } = req.body; // ✅ FIXED
+  category = category.toLowerCase();
+
+  const data = JSON.parse(fs.readFileSync(DATA_PATH, "utf-8"));
+
+  if (data[category] && data[category][index]) {
+    data[category][index] = quiz;
     fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2));
     res.json({ success: true });
   } else {

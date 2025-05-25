@@ -1,27 +1,28 @@
 {
-  "CSS": [
+  "css": [
     {
-      "question": "How wide do you think .my-box will be?                                         .my-box {   width: 200px;   border: 10px solid;   padding: 10px; }          ",
+      "question": "qwerty",
       "answers": [
-        "asf",
-        "sadf",
-        "sf",
-        "sdf"
+        "a1",
+        "a2",
+        "a3",
+        "a4"
       ],
       "correct": 1
     },
     {
-      "question": "afsdafsdf",
+      "question": "CSS is?",
       "answers": [
-        "asfdsf",
-        "sdafsda",
-        "sdfsad",
-        "fsdf"
+        "Programming Language",
+        "Hypertext Markup Language",
+        "Cascading Style Sheet",
+        "None of these"
       ],
-      "correct": 3
+      "correct": 2,
+      "explanation": "Cascading Style Sheets (CSS) is a style sheet language used for specifying the presentation and styling of a document written in a markup language such as HTML or XML"
     }
   ],
-  "PYTHON": [
+  "python": [
     {
       "question": "which one is not used in python?",
       "answers": [
@@ -40,9 +41,7 @@
         "Hypertext Markup Language",
         "none of these"
       ],
-      "correct": 2,
-      "code": null,
-      "explanation": null
+      "correct": 2
     },
     {
       "question": "What is a correct syntax to output \"Hello World\" in Python?",
@@ -53,11 +52,10 @@
         "echo(\"Hello World!\")"
       ],
       "correct": 2,
-      "code": null,
       "explanation": "abc"
     }
   ],
-  "BASH": [
+  "bash": [
     {
       "question": "which one is not from bash syntax?",
       "answers": [
@@ -67,7 +65,6 @@
         "p tag"
       ],
       "correct": 3,
-      "code": null,
       "explanation": "p tag: It is a HTML tag. Paragraph tag <p></p>"
     }
   ]
