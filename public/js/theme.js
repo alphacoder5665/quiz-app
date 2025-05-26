@@ -5,9 +5,9 @@ export function toggleTheme() {
   const next = current === "dark" ? "light" : "dark";
   document.body.dataset.theme = next;
 
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  if (themeToggleBtn) {
-    themeToggleBtn.textContent = next === "dark" ? "☀️" : "🌙";
+  const toggleBtn = document.getElementById("theme-toggle");
+  if (toggleBtn) {
+    toggleBtn.textContent = next === "dark" ? "☀️" : "🌙";
   }
 }
 

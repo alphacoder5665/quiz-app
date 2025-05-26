@@ -2,6 +2,8 @@
 
 import { showSection } from "./nav.js";
 import { renderQuestion } from "./quizRenderer.js";
+import { getEditMode, setEditMode, clearEditMode } from "./editMode.js";
+
 
 // Fetch all quizzes from API
 export async function getQuizzes() {
@@ -29,9 +31,10 @@ export async function updateCategoryCounts() {
 
 // When a category is clicked, show its quizzes
 export async function handleCategoryClick(e) {
-  if (e.target.tagName !== "LI") return;
+  const li = e.target.closest("li");
+  if (!li || !li.dataset.category) return;
 
-  const category = e.target.dataset.category.toLowerCase();
+  const category = li.dataset.category.toLowerCase();
   showSection("take");
 
   const data = await getQuizzes();

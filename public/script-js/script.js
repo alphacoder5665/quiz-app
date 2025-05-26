@@ -2,7 +2,7 @@ const form = document.getElementById("quiz-form");
 const quizArea = document.getElementById("quiz-area");
 const categoryList = document.getElementById("category-list");
 
-
+// done1
 function formatExplanation(explanation) {
   const parts = explanation.split(/```/g);
   let html = "";
@@ -24,6 +24,7 @@ function formatExplanation(explanation) {
 
   return html;
 }
+// END done1
 
 document.getElementById("explanation").addEventListener("input", (e) => {
   const html = formatExplanation(e.target.value);
@@ -54,7 +55,7 @@ async function updateCategoryCounts() {
   });
 }
 
-
+// done8
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const category = document.getElementById("category").value;
@@ -115,6 +116,8 @@ form.addEventListener("submit", async (e) => {
   document.getElementById("preview-content").innerHTML = "";
 
 });
+// END done8
+
 
 categoryList.addEventListener("click", async (e) => {
   if (e.target.tagName !== "LI") return;
@@ -159,6 +162,7 @@ categoryList.addEventListener("click", async (e) => {
   
 });
 
+// done9
 let quizTimer = null;
 function renderQuestion(category, index) {
   fetch("/api/quizzes")
@@ -319,7 +323,9 @@ async function deleteQuiz(category, index) {
   }
 }
 
+// done7
 let editMode = null; // ⬅️ Track if we’re editing
+// done7
 
 async function editQuiz(category, index) {
   const data = await getQuizzes();
@@ -345,6 +351,7 @@ async function editQuiz(category, index) {
   document.getElementById("category").focus();
 }
 
+// done5
 function goHome() {
   ["home-screen", "main-container", "create-quiz-screen"].forEach((id) => {
     const el = document.getElementById(id);
@@ -356,9 +363,9 @@ function goHome() {
   home.style.display = "block";
   setTimeout(() => home.classList.remove("hidden"), 50);
 }
+// END done5
 
-
-
+// done6
 function showSection(name) {
   ["home-screen", "main-container", "create-quiz-screen"].forEach((id) => {
     const el = document.getElementById(id);
@@ -385,6 +392,7 @@ function showSection(name) {
       ?.click();
   }
 }
+// END done6
 
 
 function autoReveal(category, index, correct) {
@@ -405,6 +413,7 @@ function autoReveal(category, index, correct) {
 }
 
 
+//  done2
 document.addEventListener("keydown", (e) => {
   const key = e.key.toLowerCase();
   const keyMap = {
@@ -424,8 +433,9 @@ document.addEventListener("keydown", (e) => {
     if (opt) opt.click();
   }
 });
+// END done2
 
-
+// done3
 function toggleTheme() {
   const current = document.body.dataset.theme;
   const next = current === "dark" ? "light" : "dark";
@@ -434,6 +444,7 @@ function toggleTheme() {
     next === "dark" ? "☀️" : "🌙";
 }
 document.body.dataset.theme = "light";
+// END done3
 
 
 window.addEventListener("beforeunload", (e) => {

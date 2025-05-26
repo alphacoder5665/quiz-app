@@ -1,4 +1,4 @@
-// Rendering, Answer Logic, Delete
+// 📄 public/js/quizRenderer.js
 
 import { getQuizzes, updateCategoryCounts } from "./categoryHandler.js";
 import { formatExplanation } from "./utils.js";
@@ -10,56 +10,56 @@ export async function renderQuestion(category, index) {
   const data = await getQuizzes();
   const quiz = data[category][index];
   const total = data[category].length;
-
   const quizArea = document.getElementById("quiz-area");
 
-  quizArea.innerHTML = `
-    <div class="progress-bar">Question ${index + 1} of ${total}</div>
-    <div class="quiz-question-block">
-      <div id="question-timer" class="timer">⏱️ Time Left: <span id="time-left">30</span>s</div>
-      <div class="timer-bar"><div class="timer-fill"></div></div>
-      <h3>Q${index + 1}. ${quiz.question}</h3>
-      ${quiz.code ? `<pre><code>${quiz.code}</code></pre>` : ""}
-      <div class="quiz-options">
-        ${quiz.answers
-          .map(
-            (a, i) => `
-          <div class="quiz-option" data-index="${i}">
-            ${String.fromCharCode(65 + i)}. ${a}
-          </div>
-        `
-          )
-          .join("")}
-      </div>
-      ${
-        quiz.explanation
-          ? `
-        <div class="explanation-block" style="display:none;">
-          <strong>Reason/Explanation:</strong>
-          ${formatExplanation(quiz.explanation)}
-        </div>`
-          : ""
-      }
-      <div class="question-actions">
-        <button data-edit>✏️ Edit</button>
-        <button data-delete>🗑️ Delete</button>
-      </div>
-    </div>
-  `;
-
   quizArea.style.opacity = 0;
-  setTimeout(() => (quizArea.style.opacity = 1), 100);
 
-  setupAnswerHandlers(quiz.correct);
-  setupActionButtons(category, index);
-  startTimer(() => autoReveal(category, index, quiz.correct));
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  setTimeout(() => {
+    quizArea.innerHTML = `
+      <div class="progress-bar">Question ${index + 1} of ${total}</div>
+      <div class="quiz-question-block">
+        <div id="question-timer" class="timer">⏱️ Time Left: <span id="time-left">30</span>s</div>
+        <div class="timer-bar"><div class="timer-fill"></div></div>
+        <h3>Q${index + 1}. ${quiz.question}</h3>
+        ${quiz.code ? `<pre><code>${quiz.code}</code></pre>` : ""}
+        <div class="quiz-options">
+          ${quiz.answers
+            .map(
+              (a, i) => `
+            <div class="quiz-option" data-index="${i}">
+              ${String.fromCharCode(65 + i)}. ${a}
+            </div>`
+            )
+            .join("")}
+        </div>
+        ${
+          quiz.explanation
+            ? `
+          <div class="explanation-block" style="display:none;">
+            <strong>Reason/Explanation:</strong>
+            ${formatExplanation(quiz.explanation)}
+          </div>`
+            : ""
+        }
+        <div class="question-actions">
+          <button data-edit>✏️ Edit</button>
+          <button data-delete>🗑️ Delete</button>
+        </div>
+      </div>
+    `;
+
+    setupAnswerHandlers(quiz.correct);
+    setupActionButtons(category, index);
+    startTimer(() => autoReveal(category, index, quiz.correct));
+
+    quizArea.style.opacity = 1;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, 100);
 }
 
 function setupAnswerHandlers(correct) {
-  const options = document.querySelectorAll(".quiz-option");
-  options.forEach((opt, i) => {
-    opt.addEventListener("click", () => revealAnswer(i, correct));
+  document.querySelectorAll(".quiz-option").forEach((opt, i) => {
+    opt.addEventListener("click", () => revealAnswer(opt, i, correct));
   });
 }
 
@@ -92,28 +92,34 @@ function startTimer(callback) {
   }, 1000);
 }
 
-function revealAnswer(selected, correct) {
+function revealAnswer(el, selected, correct) {
+  const options = el.parentElement.querySelectorAll(".quiz-option");
   if (quizTimer) clearInterval(quizTimer);
 
-  const options = document.querySelectorAll(".quiz-option");
+  // 1. Mark selected first
+  options.forEach((opt) =>
+    opt.classList.remove("selected", "correct", "wrong")
+  );
+  options[selected]?.classList.add("selected");
 
-  options.forEach((opt, i) => {
-    opt.classList.remove("selected", "correct", "wrong");
-    if (i === selected) opt.classList.add("selected");
-  });
-
+  // 2. Then after short delay, reveal
   setTimeout(() => {
     options.forEach((opt, i) => {
       opt.classList.remove("selected");
-      opt.classList.add(i === correct ? "correct" : "wrong");
+      if (i === correct) {
+        opt.classList.add("correct");
+      } else if (i === selected) {
+        opt.classList.add("wrong");
+      }
       opt.style.pointerEvents = "none";
     });
 
-    document
-      .querySelector(".explanation-block")
-      ?.style.setProperty("display", "block");
+    const questionBlock = el.closest(".quiz-question-block");
+    const explanationBlock = questionBlock?.querySelector(".explanation-block");
+    if (explanationBlock) explanationBlock.style.display = "block";
   }, 300);
 }
+
 
 export async function deleteQuiz(category, index) {
   const confirmDelete = confirm("Are you sure you want to delete this quiz?");
@@ -134,13 +140,17 @@ export async function deleteQuiz(category, index) {
 
 export function autoReveal(category, index, correct) {
   const options = document.querySelectorAll(".quiz-option");
+
   options.forEach((opt, i) => {
     opt.classList.remove("correct", "wrong");
-    opt.classList.add(i === correct ? "correct" : "wrong");
+    if (i === correct) {
+      opt.classList.add("correct");
+    } else {
+      opt.classList.add("wrong");
+    }
     opt.style.pointerEvents = "none";
   });
 
-  document
-    .querySelector(".explanation-block")
-    ?.style.setProperty("display", "block");
+  const explanationBlock = document.querySelector(".explanation-block");
+  if (explanationBlock) explanationBlock.style.display = "block";
 }

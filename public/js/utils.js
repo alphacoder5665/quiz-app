@@ -7,8 +7,10 @@ export function formatExplanation(explanation) {
   
     parts.forEach((part, i) => {
       if (i % 2 === 1) {
+      	// Code block
         html += `<pre><code>${part.trim()}</code></pre>`;
       } else {
+      	// Paragraph block
         const wrapped = part
           .trim()
           .split("\n")

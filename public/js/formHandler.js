@@ -1,9 +1,5 @@
-// Quiz Form Submission & Editing
-
 import { updateCategoryCounts } from "./categoryHandler.js";
-
-let editMode = null;
-window.editMode = editMode; // Expose to global scope for external check (beforeunload)
+import { getEditMode, clearEditMode } from "./editMode.js";
 
 export async function handleFormSubmit(e) {
   e.preventDefault();
@@ -32,19 +28,20 @@ export async function handleFormSubmit(e) {
     return;
   }
 
-  if (window.editMode) {
+  const currentEdit = getEditMode();
+  if (currentEdit) {
     await fetch("/api/quizzes", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        category: window.editMode.category,
-        index: window.editMode.index,
+        category: currentEdit.category,
+        index: currentEdit.index,
         quiz,
       }),
     });
 
     alert("Quiz updated!");
-    window.editMode = null;
+    clearEditMode();
   } else {
     await fetch("/api/quizzes", {
       method: "POST",
