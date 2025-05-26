@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Professional quiz creation and testing app">
+  <meta charset="UTF-8" />
+  <meta name="description" content="Professional quiz creation and testing app" />
   <title>Professional Quiz App</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <nav>
-      <a href="#" class="home-link" onclick="goHome()">🏠 Home</a>
+  <nav>
+    <ul id="category-list">
+      <!-- <li class="home-link" onclick="goHome()">
+          <img src="logo.png" alt="Home" style="height: 24px;">
+        </li>         -->
+      <li class="home-link" onclick="goHome()">🏠 Home</li>
+      <!-- <li data-category="HTML">
+            <img src="icons/html.svg" alt="HTML" height="16"> HTML
+          </li>           -->
+      <li data-category="HTML">HTML <span class="badge"></span></li>
+      <li data-category="CSS">CSS <span class="badge"></span></li>
+      <li data-category="JavaScript">JavaScript <span class="badge"></span></li>
+      <li data-category="Python">Python <span class="badge"></span></li>
+      <li data-category="Bash">Bash <span class="badge"></span></li>
 
-        <ul id="category-list">
-          <li data-category="HTML">HTML</li>
-          <li data-category="CSS">CSS</li>
-          <li data-category="JavaScript">JavaScript</li> 
-          <li data-category="Python">Python</li>
-          <li data-category="Bash">Bash</li>
-        </ul>
-      </nav>
+    </ul>
+    <button onclick="toggleTheme()" id="theme-toggle">🌙</button>
+  </nav>
 
-      <section id="home-screen">
-        <h2>Welcome to the Quiz App!</h2>
-        <button onclick="showSection('create')">Create Quiz</button>
-        <button onclick="showSection('take')">Take Quiz</button>
-      </section>
-      
-      
+  <div id="nav-tabs">
+    <button onclick="goHome()">🏠 Home</button>
+    <button onclick="showSection('create')">✍️ Create Quiz</button>
+    <button onclick="showSection('take')">🧠 Take Quiz</button>
+  </div>
+
+  <section id="home-screen">
+    <h2>Welcome to the Quiz App!</h2>
+    <button onclick="showSection('create')">Create Quiz</button>
+    <button onclick="showSection('take')">Take Quiz</button>
+  </section>
 
   <main id="main-container">
     <aside id="sidebar">
@@ -38,65 +51,91 @@
     </section>
   </main>
 
-  <section id="create-quiz-screen" class="section" style="display:none;">
+  <section id="create-quiz-screen" class="section" style="display: none">
     <h2>Create a New Quiz</h2>
-  
+
     <div id="create-container">
       <aside>
-        <p><strong>Instructions:</strong><br> Fill in the fields to create a custom quiz.</p>
+        <p>
+          <strong>Instructions:</strong>
+          <br />
+          Fill in the fields to create a custom quiz.
+          <br /><br /><br />
+          <strong>Explanation Fill style:</strong>
+          <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;
+          <strong>- Paragraph writing style:</strong>
+          <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Paragraph can be write
+          as normal text. <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <strong>Example:</strong>
+          <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Python is a
+          high-level, general-purpose programming language designed for code
+          readability, with a syntax that emphasizes the use of significant
+          whitespace. <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;
+          <strong>- Code Writing Style:</strong>
+          <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - code will be written
+          between tripple <code>```</code> <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <strong>Example:</strong>
+        <pre><code>    
+```
+name = "John"
+age = 56
+
+print(f"{name=}, {age=}")
+```
+</code></pre>
+        </p>
       </aside>
-  
+
       <div id="quiz-builder">
         <form id="quiz-form">
-            <div class="form-group">
-              <label>Category</label>
-              <input type="text" id="category" placeholder="e.g., HTML" required>
+          <div class="form-group">
+            <label>Category</label>
+            <input type="text" id="category" placeholder="e.g., HTML" required />
+          </div>
+
+          <div class="form-group">
+            <label>Question</label>
+            <input type="text" id="question" placeholder="Type your question" required />
+          </div>
+
+          <div class="form-group">
+            <label>Code (optional)</label>
+            <textarea id="code" placeholder="Paste any code related to the question" rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Answers</label>
+            <input type="text" class="answer" placeholder="Answer 1" required />
+            <input type="text" class="answer" placeholder="Answer 2" required />
+            <input type="text" class="answer" placeholder="Answer 3" />
+            <input type="text" class="answer" placeholder="Answer 4" />
+          </div>
+
+          <div class="form-group">
+            <label>Correct Answer Index (1-based)</label>
+            <input type="number" id="correct" placeholder="1" required />
+          </div>
+
+          <div class="form-group">
+            <label>Explanation</label>
+            <textarea id="explanation"
+              placeholder="Example: \nSome paragraph.\n\n\`\`\`\nconsole.log('code here');\n\`\`\`" rows="6"></textarea>
+            <div id="explanation-preview" class="explanation-block" style="margin-top: 10px">
+              <strong>Preview:</strong>
+              <div id="preview-content"></div>
             </div>
-          
-            <div class="form-group">
-              <label>Question</label>
-              <input type="text" id="question" placeholder="Type your question" required>
-            </div>
-          
-            <div class="form-group">
-              <label>Code (optional)</label>
-              <textarea id="code" placeholder="Paste any code related to the question" rows="4"></textarea>
-            </div>
-          
-            <div class="form-group">
-              <label>Answers</label>
-              <input type="text" class="answer" placeholder="Answer 1" required>
-              <input type="text" class="answer" placeholder="Answer 2" required>
-              <input type="text" class="answer" placeholder="Answer 3">
-              <input type="text" class="answer" placeholder="Answer 4">
-            </div>
-          
-            <div class="form-group">
-              <label>Correct Answer Index (1-based)</label>
-              <input type="number" id="correct" placeholder="1" required>
-            </div>
-          
-            <div class="form-group">
-              <label>Explanation (optional)</label>
-              <div>
-                <label><input type="radio" name="explain-type" value="code"> Contains Code</label><br>
-                <label><input type="radio" name="explain-type" value="text"> Contains Paragraph</label><br>
-                <label><input type="radio" name="explain-type" value="both" checked> Contains Code and Paragraph</label>
-              </div>
-              <textarea id="explanation" placeholder="Example: \nSome paragraph.\n\n\`\`\`\nconsole.log('code here');\n\`\`\`" rows="6"></textarea>
-            </div>
-            
-          
-            <div class="form-group">
-              <button type="submit">💾 Save Quiz</button>
-            </div>
-          </form>
-          
+          </div>
+
+          <div class="form-group">
+            <button type="submit">💾 Save Quiz</button>
+          </div>
+        </form>
       </div>
     </div>
   </section>
-  
 
-  <script src="script.js"></script>
+  <script src="script-js/script.js"></script>
+  <!-- <script type="module" src="js/main.js"></script> -->
 </body>
+
 </html>

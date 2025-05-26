@@ -1,0 +1,16 @@
+// Theme Toggler
+
+export function toggleTheme() {
+  const current = document.body.dataset.theme;
+  const next = current === "dark" ? "light" : "dark";
+  document.body.dataset.theme = next;
+
+  const themeToggleBtn = document.getElementById("theme-toggle");
+  if (themeToggleBtn) {
+    themeToggleBtn.textContent = next === "dark" ? "☀️" : "🌙";
+  }
+}
+
+export function initTheme() {
+  document.body.dataset.theme = "light";
+}

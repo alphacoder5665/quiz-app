@@ -20,6 +20,51 @@
       ],
       "correct": 2,
       "explanation": "Cascading Style Sheets (CSS) is a style sheet language used for specifying the presentation and styling of a document written in a markup language such as HTML or XML"
+    },
+    {
+      "question": "CSS is?",
+      "answers": [
+        "safd",
+        "asdf",
+        "saf",
+        "sdfa"
+      ],
+      "correct": 2,
+      "explanation": "css is a cascading style sheet which helps in styling html and xml files on browser.\n\nExample:\n```\n.p {\n   color: yellow;\n   font-size: 34px;\n}\n```"
+    },
+    {
+      "question": "afsdafsdf",
+      "answers": [
+        "vvzxbdgs",
+        "gsddgs",
+        "sdgfdgsdg",
+        "nxcvbcvx"
+      ],
+      "correct": 1,
+      "explanation": "cvCdzfcsdfvzxvdsgecxzvsgevzxcdfsadegvd\n\n```\n xczvxczv xzvbxvbxvxzx\n    gsgdgdfgsd\n```"
+    },
+    {
+      "question": "css styling's",
+      "answers": [
+        "asf",
+        "sfasd",
+        "asfdsad",
+        "asdfs"
+      ],
+      "correct": 2,
+      "explanation": "```\n[data-theme=\"dark\"] form {\n  background-color: #2a2a2a;\n  color: #f1f1f1;\n  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);\n}\n\n[data-theme=\"dark\"] .form-group input,\n[data-theme=\"dark\"] .form-group textarea {\n  background-color: #333;\n  color: #fff;\n  border-color: #555;\n}\n\n[data-theme=\"dark\"] .form-group input:focus,\n[data-theme=\"dark\"] .form-group textarea:focus {\n  border-color: #64b5f6;\n}\n\n[data-theme=\"dark\"] .form-group button {\n  background-color: #1565c0;\n}\n\n[data-theme=\"dark\"] .form-group button:hover {\n  background-color: #0d47a1;\n}\n\n[data-theme=\"dark\"] #create-container aside {\n  background-color: #2e2e2e;\n  color: #ddd;\n  border-right: 1px solid #444;\n}\n\n[data-theme=\"dark\"] .form-group label {\n  color: #eee;\n}\n\n[data-theme=\"dark\"] #explanation-preview {\n  background-color: #1e1e1e;\n  color: #f5f5f5;\n  border-left: 5px solid #ffca28;\n}\n\n```\n"
+    },
+    {
+      "question": "CSS isa a? ",
+      "answers": [
+        "asfdsa",
+        "sdfsf",
+        "asdfas",
+        "fasdf"
+      ],
+      "correct": 2,
+      "code": "[data-theme=\"dark\"] pre code {\n  background: #2c2c2c;\n  color: #f8f8f8;\n}\n\n[data-theme=\"dark\"] form {\n  background-color: #2a2a2a;\n  color: #f1f1f1;\n  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);\n}\n\n[data-theme=\"dark\"] pre code {\n  background: #2c2c2c;\n  color: #f8f8f8;\n}\n\n[data-theme=\"dark\"] form {\n  background-color: #2a2a2a;\n  color: #f1f1f1;\n  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);\n}\n\n\n[data-theme=\"dark\"] pre code {\n  background: #2c2c2c;\n  color: #f8f8f8;\n}\n\n[data-theme=\"dark\"] form {\n  background-color: #2a2a2a;\n  color: #f1f1f1;\n  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);\n}\n\n\n[data-theme=\"dark\"] pre code {\n  background: #2c2c2c;\n  color: #f8f8f8;\n}\n\n[data-theme=\"dark\"] form {\n  background-color: #2a2a2a;\n  color: #f1f1f1;\n  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);\n}",
+      "explanation": "safasdfsda\n```\n[data-theme=\"dark\"] pre code {\n  background: #2c2c2c;\n  color: #f8f8f8;\n}\n\n[data-theme=\"dark\"] form {\n  background-color: #2a2a2a;\n  color: #f1f1f1;\n  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);\n}\n```"
     }
   ],
   "python": [
@@ -63,7 +108,7 @@
         "None of these"
       ],
       "correct": 1,
-      "explanation": "Python is a high-level, general-purpose programming language designed for code readability, with a syntax that emphasizes the use of significant whitespace.\n\n```\nname = \"John\"\nage = 56\n\nprint(f\"{name=}, {age=}\")\n```"
+      "explanation": "Python is a high-level, general-purpose programming language designed for code readability, with a syntax that emphasizes the use of significant whitespace.\n\n\n```\nname = \"John\"\nage = 56\n\nprint(f\"{name=}, {age=}\")\n```"
     }
   ],
   "bash": [
@@ -77,6 +122,18 @@
       ],
       "correct": 3,
       "explanation": "p tag: It is a HTML tag. Paragraph tag <p></p>"
+    }
+  ],
+  "javascript": [
+    {
+      "question": "javascript is used mostly used on browsers:",
+      "answers": [
+        "yes",
+        "no",
+        "50-50",
+        "i don't know"
+      ],
+      "correct": 0
     }
   ]
 }
